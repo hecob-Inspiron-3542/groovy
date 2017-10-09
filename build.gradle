@@ -1,0 +1,36 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+jar {
+    baseName = 'my-shared-lib'
+    version =  '0.1.0'
+    manifest {
+        attributes("Build-Time": new Date().format("yyyy-MM-dd HH:mm:ss"),
+                "Build-Jdk": System.getProperty("java.version"),
+                "Built-By": System.getProperty("user.name"),
+                "Created-By": "Gradle",
+        )
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+// java version dependency
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    // your local jar dependency
+    compile files('./lib/my-shared-lib.jar')
+    // groovy
+    compile 'org.codehaus.groovy:groovy-all:2.1.9'
+
+    //other useful dependencies
+    compile 'log4j:log4j:1.2.17'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}

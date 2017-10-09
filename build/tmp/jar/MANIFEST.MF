@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Built-By: jjiang
+Build-Time: 2017-10-09 13:12:04
+Build-Jdk: 1.8.0_144
+Created-By: Gradle
+
